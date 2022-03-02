@@ -10,18 +10,18 @@ namespace AndroidCA2Backend.Controllers
         {
             new Games { Game = "CS:GO", Genre = "FPS"},
             new Games { Game = "CS:Source", Genre = "FPS"},
-            new Games { Game = "CS 1.6", Genre = "FPS"},
-            new Games { Game = "Elden Ring", Genre = "RPG, Action"},
-            new Games { Game = "Dark Souls I", Genre = "RPG, Action"},
-            new Games { Game = "Dark Souls II", Genre = "RPG, Action"},
-            new Games { Game = "Dark Souls III", Genre = "RPG, Action"},
-            new Games { Game = "GTA", Genre = "RPG, Action"},
-            new Games { Game = "GTA II", Genre = "RPG, Action"},
-            new Games { Game = "GTA III", Genre = "RPG, Action"},
-            new Games { Game = "GTA San Andreas", Genre = "RPG, Action"},
-            new Games { Game = "GTA IV", Genre = "RPG, Action"},
-            new Games { Game = "GTA V", Genre = "RPG, Action"},
-            new Games { Game = "Apex Legends", Genre = "Action, FPS"},
+            new Games { Game = "CS 1.6", Genre = "FPS" },
+            new Games { Game = "Elden Ring", Genre = "Adventure"},
+            new Games { Game = "Dark Souls I", Genre = "RPG"},
+            new Games { Game = "Dark Souls II", Genre = "RPG"},
+            new Games { Game = "Dark Souls III", Genre = "RPG"},
+            new Games { Game = "GTA", Genre = "Action"},
+            new Games { Game = "GTA II", Genre = "Action"},
+            new Games { Game = "GTA III", Genre = "Action"},
+            new Games { Game = "GTA San Andreas", Genre = "Action"},
+            new Games { Game = "GTA IV", Genre = "Action"},
+            new Games { Game = "GTA V", Genre = "Action"},
+            new Games { Game = "Apex Legends", Genre = "FPS"},
         };
 
         //GET all games in liked order
@@ -66,5 +66,24 @@ namespace AndroidCA2Backend.Controllers
                 return Ok(searchG);
             }
         }
+
+        //GET search/genre/{genre}
+        [HttpGet("search/genre/{genre}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Games> GetGenre(string genre)
+        {
+            // LINQ query search by genre
+            var searchG = allGames.Where(p => p.Genre.ToLower() == genre.ToLower());
+            if (searchG == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(searchG);
+            }
+        }
+
     }
 }
