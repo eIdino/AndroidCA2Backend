@@ -6,12 +6,28 @@ namespace AndroidCA2Backend.Controllers
     [Route("[controller]")]
     public class GameController : ControllerBase
     {
-        private static List<Games> repos = new()
+        private readonly static List<Games> allGames = new List<Games>()
         {
-            new DockerHub() { Username = "jdoe", Repo = "helloworld", Tag = "latest", OSystem = "linux", Size = 20 },
-            new DockerHub() { Username = "jdoe", Repo = "helloworld", Tag = "v1", OSystem = "linux", Size = 50 },
-            new DockerHub() { Username = "bdo", Repo = "helloworld2", Tag = "latest", OSystem = "linux", Size = 25 },
-            new DockerHub() { Username = "senz", Repo = "myrepo", Tag = "latest", OSystem = "linux", Size = 100 },
+            new Games { Game = "CS:GO", Genre = "FPS"},
+            new Games { Game = "CS:Source", Genre = "FPS"},
+            new Games { Game = "CS 1.6", Genre = "FPS"},
+            new Games { Game = "Elden Ring", Genre = "RPG, Action"},
+            new Games { Game = "Dark Souls I", Genre = "RPG, Action"},
+            new Games { Game = "Dark Souls II", Genre = "RPG, Action"},
+            new Games { Game = "Dark Souls III", Genre = "RPG, Action"},
+            new Games { Game = "GTA", Genre = "RPG, Action"},
+            new Games { Game = "GTA II", Genre = "RPG, Action"},
+            new Games { Game = "GTA III", Genre = "RPG, Action"},
+            new Games { Game = "GTA San Andreas", Genre = "RPG, Action"},
+            new Games { Game = "GTA IV", Genre = "RPG, Action"},
+            new Games { Game = "GTA V", Genre = "RPG, Action"},
         };
+
+        //GET all games in liked order
+        [HttpGet]
+        public IEnumerable<Games> GetAll()
+        {
+            return allGames.OrderBy(w => w.Like);
+        }
     }
 }
