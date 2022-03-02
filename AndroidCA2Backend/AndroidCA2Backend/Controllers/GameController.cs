@@ -21,6 +21,7 @@ namespace AndroidCA2Backend.Controllers
             new Games { Game = "GTA San Andreas", Genre = "RPG, Action"},
             new Games { Game = "GTA IV", Genre = "RPG, Action"},
             new Games { Game = "GTA V", Genre = "RPG, Action"},
+            new Games { Game = "Apex Legends", Genre = "Action, FPS"},
         };
 
         //GET all games in liked order
