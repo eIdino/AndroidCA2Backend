@@ -28,7 +28,24 @@ namespace AndroidCA2Backend.Controllers
         [HttpGet]
         public IEnumerable<Games> GetAll()
         {
-            return allGames.OrderBy(w => w.Like);
+            return allGames.OrderByDescending(w => w.Like);
+        }
+
+        [HttpPut("game/{game}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult PutLikeGame([FromRoute] string game)
+        {
+            var like = allGames.SingleOrDefault(r => r.Game == game);
+            if (like == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                like.Like++;
+                return NoContent();
+            }
         }
     }
 }
