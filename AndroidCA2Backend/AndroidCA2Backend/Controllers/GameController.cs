@@ -31,6 +31,7 @@ namespace AndroidCA2Backend.Controllers
             return allGames.OrderByDescending(w => w.Like);
         }
 
+        //PUT for likes
         [HttpPut("game/{game}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -45,6 +46,24 @@ namespace AndroidCA2Backend.Controllers
             {
                 like.Like++;
                 return NoContent();
+            }
+        }
+
+        //GET search/{game}
+        [HttpGet("search/{game}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Games> GetGame(string game)
+        {
+            // LINQ query search by game name
+            var searchG = allGames.FirstOrDefault(p => p.Game.ToLower() == game.ToLower());
+            if (searchG == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(searchG);
             }
         }
     }

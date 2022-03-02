@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace AndroidCA2Backend
 {
     public class Games
@@ -8,6 +10,7 @@ namespace AndroidCA2Backend
 
         public int Like { get; set; } = 0;
 
+        [JsonIgnore]
         public string GameInfo
         { get
             {
