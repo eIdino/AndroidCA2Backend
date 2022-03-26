@@ -4,6 +4,8 @@ namespace AndroidCA2Backend
 {
     public class Games
     {
+        public int Id { get; set; }
+
         public string Game { get; set; }
 
         public string Genre { get; set; }

@@ -1,4 +1,10 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using AndroidCA2Backend.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AndroidCA2BackendContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AndroidCA2BackendContext")));
 
 // Add services to the container.
 
