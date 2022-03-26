@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AndroidCA2Backend;
 using AndroidCA2Backend.Data;
+using Microsoft.Data.SqlClient;
 
 namespace AndroidCA2Backend.Controllers
 {
@@ -15,6 +16,18 @@ namespace AndroidCA2Backend.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
+        public class StudentContext : DbContext
+        {
+
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+                optionsBuilder.UseSqlServer(@"Server=tcp:eadca2.database.windows.net,1433;Initial Catalog=EADCA2db;Persist Security Info=False;User ID=dbuser;Password={ca2EADdb1*};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
+                    .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+            }
+
+            public DbSet<Games> Games { get; set; }
+        }
+
         private readonly AndroidCA2BackendContext _context;
 
         public GamesController(AndroidCA2BackendContext context)
@@ -30,7 +43,7 @@ namespace AndroidCA2Backend.Controllers
         }
 
         // GET: api/Games/5
-        [HttpGet("{id}")]
+        [HttpGet("{ id}")]
         public async Task<ActionResult<Games>> GetGames(int id)
         {
             var games = await _context.Games.FindAsync(id);

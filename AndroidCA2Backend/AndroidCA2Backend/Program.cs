@@ -4,7 +4,7 @@ using AndroidCA2Backend.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AndroidCA2BackendContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AndroidCA2BackendContext")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EADCA2db")));
 
 // Add services to the container.
 
