@@ -43,6 +43,20 @@ namespace AndroidCA2Backend.Controllers
             return games;
         }
 
+        //GET by genre api/Games/genre/action
+        [HttpGet("genre/{genre}")]
+        public IEnumerable<Games> GetGamesByGenre(string genre)
+        {
+            var games = _context.Games.Where(g => g.Genre == genre);
+
+            if (games == null)
+            {
+                return null;
+            }
+
+            return games;
+        }
+
         //PUT by id api/Games/update/14 takes in json
         [HttpPut("update/{id}")]
         public async Task<IActionResult> PutGames(int id, Games games)
