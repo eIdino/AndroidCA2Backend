@@ -29,8 +29,8 @@ namespace AndroidCA2Backend.Controllers
             return await _context.Games.ToListAsync();
         }
 
-        //GET by id api/Games/14
-        [HttpGet("{id}")]
+        //GET by id api/Games/find/14
+        [HttpGet("find/{id}")]
         public async Task<ActionResult<Games>> GetGames(int id)
         {
             var games = await _context.Games.FindAsync(id);
@@ -43,8 +43,8 @@ namespace AndroidCA2Backend.Controllers
             return games;
         }
 
-        //PUT by id api/Games/14
-        [HttpPut("{id}")]
+        //PUT by id api/Games/update/14 takes in json
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> PutGames(int id, Games games)
         {
             if (id != games.Id)
@@ -73,7 +73,7 @@ namespace AndroidCA2Backend.Controllers
             return NoContent();
         }
 
-        //POST new to db api/Games
+        //POST new to db api/Games takes in json
         [HttpPost]
         public async Task<ActionResult<Games>> PostGames(Games games)
         {
@@ -83,8 +83,8 @@ namespace AndroidCA2Backend.Controllers
             return CreatedAtAction("GetGames", new { id = games.Id }, games);
         }
 
-        //DELETE by id api/Games/5
-        [HttpDelete("{id}")]
+        //DELETE by id api/Games/del/14
+        [HttpDelete("del/{id}")]
         public async Task<IActionResult> DeleteGames(int id)
         {
             var games = await _context.Games.FindAsync(id);
