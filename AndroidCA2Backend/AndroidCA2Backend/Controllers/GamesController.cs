@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AndroidCA2Backend;
 using AndroidCA2Backend.Data;
-using Microsoft.Data.SqlClient;
 
 namespace AndroidCA2Backend.Controllers
 {
@@ -16,18 +15,6 @@ namespace AndroidCA2Backend.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        public class StudentContext : DbContext
-        {
-
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            {
-                optionsBuilder.UseSqlServer(@"Server=tcp:eadca2.database.windows.net,1433;Initial Catalog=EADCA2db;Persist Security Info=False;User ID=dbuser;Password={ca2EADdb1*};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
-                    .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
-            }
-
-            public DbSet<Games> Games { get; set; }
-        }
-
         private readonly AndroidCA2BackendContext _context;
 
         public GamesController(AndroidCA2BackendContext context)
@@ -35,15 +22,15 @@ namespace AndroidCA2Backend.Controllers
             _context = context;
         }
 
-        // GET: api/Games
+        //GET all by api/Games
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Games>>> GetGames()
         {
             return await _context.Games.ToListAsync();
         }
 
-        // GET: api/Games/5
-        [HttpGet("{ id}")]
+        //GET by id api/Games/14
+        [HttpGet("{id}")]
         public async Task<ActionResult<Games>> GetGames(int id)
         {
             var games = await _context.Games.FindAsync(id);
@@ -56,8 +43,7 @@ namespace AndroidCA2Backend.Controllers
             return games;
         }
 
-        // PUT: api/Games/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //PUT by id api/Games/14
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGames(int id, Games games)
         {
@@ -87,8 +73,7 @@ namespace AndroidCA2Backend.Controllers
             return NoContent();
         }
 
-        // POST: api/Games
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //POST new to db api/Games
         [HttpPost]
         public async Task<ActionResult<Games>> PostGames(Games games)
         {
@@ -98,7 +83,7 @@ namespace AndroidCA2Backend.Controllers
             return CreatedAtAction("GetGames", new { id = games.Id }, games);
         }
 
-        // DELETE: api/Games/5
+        //DELETE by id api/Games/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGames(int id)
         {
