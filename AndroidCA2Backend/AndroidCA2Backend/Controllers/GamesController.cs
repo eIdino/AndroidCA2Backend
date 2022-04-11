@@ -118,7 +118,7 @@ namespace AndroidCA2Backend.Controllers
             return _context.Games.Any(e => e.Id == id);
         }
 
-        //GET by genre api/Games/genre/action
+        //GET by genre api/Games/game/APB Reloaded
         [HttpGet("game/{game}")]
         public IEnumerable<Games> GetGamesByName(string game)
         {
@@ -132,5 +132,23 @@ namespace AndroidCA2Backend.Controllers
             return games;
         }
 
+        //PUT by genre api/Games/like/APB Reloaded
+        [HttpPut("like/{game}")]
+        public async Task<IActionResult> PutLike(string game)
+        {
+            Games games = _context.Games.FirstOrDefault(g => g.Game == game);
+
+            if (games == null) 
+            { 
+                return NotFound(); 
+            }
+
+            else
+            {
+                games.Like++;
+                _context.SaveChanges();
+            }
+            return NoContent();
+        }
     }
 }
