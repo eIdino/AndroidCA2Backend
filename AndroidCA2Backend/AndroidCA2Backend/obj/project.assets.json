@@ -9652,24 +9652,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lafaman\\.nuget\\packages\\": {},
-    "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Elpeeni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lafaman\\Desktop\\lafamans\\ITT\\Year4\\EAD2\\CA2\\Backend\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend.csproj",
+      "projectUniqueName": "C:\\Users\\Elpeeni\\Downloads\\EADCA2\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend.csproj",
       "projectName": "AndroidCA2Backend",
-      "projectPath": "C:\\Users\\lafaman\\Desktop\\lafamans\\ITT\\Year4\\EAD2\\CA2\\Backend\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend.csproj",
-      "packagesPath": "C:\\Users\\lafaman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lafaman\\Desktop\\lafamans\\ITT\\Year4\\EAD2\\CA2\\Backend\\AndroidCA2Backend\\AndroidCA2Backend\\obj\\",
+      "projectPath": "C:\\Users\\Elpeeni\\Downloads\\EADCA2\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend.csproj",
+      "packagesPath": "C:\\Users\\Elpeeni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Elpeeni\\Downloads\\EADCA2\\AndroidCA2Backend\\AndroidCA2Backend\\AndroidCA2Backend\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\lafaman\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Elpeeni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9742,7 +9737,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

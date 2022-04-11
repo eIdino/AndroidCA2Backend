@@ -117,5 +117,20 @@ namespace AndroidCA2Backend.Controllers
         {
             return _context.Games.Any(e => e.Id == id);
         }
+
+        //GET by genre api/Games/genre/action
+        [HttpGet("game/{game}")]
+        public IEnumerable<Games> GetGamesByName(string game)
+        {
+            var games = _context.Games.Where(g => g.Game == game);
+
+            if (games == null)
+            {
+                return null;
+            }
+
+            return games;
+        }
+
     }
 }
