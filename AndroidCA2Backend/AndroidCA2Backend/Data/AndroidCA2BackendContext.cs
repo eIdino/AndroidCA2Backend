@@ -16,5 +16,7 @@ namespace AndroidCA2Backend.Data
         }
 
         public DbSet<AndroidCA2Backend.Games> Games { get; set; }
+
+        public DbSet<AndroidCA2Backend.Console> Console { get; set; }
     }
 }
